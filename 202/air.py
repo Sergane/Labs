@@ -18,7 +18,10 @@ t1=[86.6,83.1,80.0,76.9,74.0,71.0,67.9,65.2,
 t2=[86.4,83.0,80.3,76.9,73.8,71.2,68.4,65.5,
 	62.4,59.9,56.8,54.1,50.8,47.7,44.9,42.0,39.0]
 t =[0.5*(t1[i]+t2[i]) for i in range(0,len(t1))]
-t =[5*a for a in t]; # умножаем t на 5
+t =[5*float(a) for a in t]; # умножаем t на 5
+
+x =[float(a) for a in x]
+
 
 # вывод данных:
 # pp.pprint(zip(x,t))
@@ -34,26 +37,26 @@ t = map(lambda a: a*10**(-6), t) # переводим в секунды
 
 fit, err, _,_,_ = np.polyfit(t,x,1,full=True)
 v = fit[0]
-print "Скорость:", v
-print "Погрешность МНК:", err[0]
+print("Скорость: "+str(v))
+print("Погрешность МНК: "+str(err[0]))
 
 Sx = np.std(x)/(n*(n-1))**0.5
 St = np.mean(t)*0.02
 Sv = ( (1/np.mean(t)*Sx)**2 +
 	   (np.mean(x)/np.mean(t)**2*St)**2 +
 	   err[0]**2)**0.5
-print "Погрешность скорости:", Sv
+print("Погрешность скорости: "+str(Sv))
 
 mu = 29*10**(-3)
 T = 297
 
 v_t = (7./5.*c.R*T/mu)**0.5
-print "Теоретическая скорость:", v_t
+print("Теоретическая скорость: "+str(v_t))
 
 gamma = mu*v**2/(c.R*T)
 Sg = 2*mu*v/(c.R*T)*Sv
-print "γ:", gamma
-print "Погрешность γ:", Sg
+print("γ: "+str(gamma))
+print("Погрешность γ: "+str(Sg))
 
 plt.plot(x1, y1, color='k')
 plt.xlabel(u'Время $t$ распространения сигнала между головками, мкс')
