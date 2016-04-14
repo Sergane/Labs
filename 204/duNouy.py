@@ -51,7 +51,7 @@ y1 = [K*x+b for x in x1]
 plt.plot(x1, y1, color='k')
 plt.scatter(T, sigma, color='k', s=25, marker="o")
 plt.xlabel(u'Температура воды T, К')
-plt.ylabel(u'Вязкость воды σ, Н/м')
+plt.ylabel(u'Коэффициент поверхностного\nнатяжения σ, Н/м')
 plt.title(u'График зависимости σ(Т)')
 plt.grid(color='k', linestyle='-')
 plt.errorbar(T, sigma, xerr=2, yerr=delta, color='k', fmt='o')
